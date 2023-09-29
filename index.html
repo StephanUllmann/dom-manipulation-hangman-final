@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap"
+      rel="stylesheet" />
+
+    <script type="module" src="app.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <title>DOM-Hangman</title>
+  </head>
+  <body>
+    <header>
+      <div class="new-word__form--wrapper">
+        <!-- Form for entering a new word  -->
+        <form class="new-word__form">
+          <label class="new-word__label" for="new-word"></label>
+            Enter new Word:
+            <input
+              class="new-word__input"
+              type="password"
+              name="new-word"
+              id="new-word" />
+          </label>
+          <button class="btn new-word__btn" type="submit">
+            &larrlp; use this
+          </button>
+        </form>
+        <!-- select a random word, previously saved -->
+        <button class="btn new-word__btn" id="random-word-btn">
+          random &rarrlp;
+        </button>
+      </div>
+      <!-- Display and change player's name -->
+      <input
+        type="text"
+        name="player-name"
+        id="player-name"
+        placeholder="Player One" />
+      <!-- display player's points -->
+      <div class="points">
+        <span class="points__num">11</span>
+        <span class="points--word">points</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hangman__container">
+        <!-- <div class="hangman__el hangman--0"></div>
+        <div class="hangman__el hangman--1"></div>
+        <div class="hangman__el hangman--2"></div>
+        <div class="hangman__el hangman--3"></div>
+        <div class="hangman__el hangman--4"></div>
+        <div class="hangman__el hangman--5"></div>
+        <div class="hangman__el hangman--6"></div>
+        <div class="hangman__el hangman--7"></div>
+        <div class="hangman__el hangman--8"></div>
+        <div class="hangman__el hangman--9"></div>
+        <div class="hangman__el hangman--10"></div> -->
+      </section>
+
+      <template id="game--won">
+        <h2 class="game-won">
+          Won! -
+          <span class="points__num points__num--won"></span>
+          Points
+        </h2>
+      </template>
+
+      <template id="game--lost">
+        <h2 class="game-over">Game over</h2>
+      </template>
+
+      <section class="word__container">
+        <!-- <div class="word__letter--container">
+          <span class="word__letter"></span>
+        </div>
+        <div class="word__letter--container">
+          <span class="word__letter"></span>
+        </div>
+        <div class="word__letter--container">
+          <span class="word__letter">e</span>
+        </div>
+        <div class="word__letter--container">
+          <span class="word__letter"></span>
+        </div>
+        <div class="word__letter--container">
+          <span class="word__letter"></span>
+        </div>
+        <div class="word__letter--container">
+          <span class="word__letter"></span>
+        </div>
+        <div class="word__letter--container">
+          <span class="word__letter"></span>
+        </div> -->
+      </section>
+
+      <section class="keyboard__container">
+        <button class="btn--letter"><span>q</span></button>
+        <button class="btn--letter"><span>w</span></button>
+        <button class="btn--letter"><span>e</span></button>
+        <button class="btn--letter"><span>r</span></button>
+        <button class="btn--letter"><span>t</span></button>
+        <button class="btn--letter"><span>y</span></button>
+        <button class="btn--letter"><span>u</span></button>
+        <button class="btn--letter"><span>i</span></button>
+        <button class="btn--letter"><span>o</span></button>
+        <button class="btn--letter"><span>p</span></button>
+        <br />
+        <button class="btn--letter">
+          <span>a</span>
+        </button>
+        <button class="btn--letter"><span>s</span></button>
+        <button class="btn--letter"><span>d</span></button>
+        <button class="btn--letter"><span>f</span></button>
+        <button class="btn--letter"><span>g</span></button>
+        <button class="btn--letter"><span>h</span></button>
+        <button class="btn--letter"><span>j</span></button>
+        <button class="btn--letter"><span>k</span></button>
+        <button class="btn--letter"><span>l</span></button>
+        <br />
+        <button class="btn--letter">
+          <span>z</span>
+        </button>
+        <button class="btn--letter"><span>x</span></button>
+        <button class="btn--letter"><span>c</span></button>
+        <button class="btn--letter"><span>v</span></button>
+        <button class="btn--letter"><span>b</span></button>
+        <button class="btn--letter"><span>n</span></button>
+        <button class="btn--letter"><span>m</span></button>
+      </section>
+      <button id="theme-toggle">Light</button>
+    </main>
+  </body>
+</html>
