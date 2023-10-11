@@ -4,16 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap"
-      rel="stylesheet" />
+      rel="stylesheet" /> -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
 
     <script type="module" src="app.js"></script>
 
     <link rel="stylesheet" href="style.css" />
-    <title>DOM-Hangman</title>
+    <title>Final DOM-o-Lantern</title>
   </head>
   <body>
     <header>
@@ -38,11 +41,11 @@
         </button>
       </div>
       <!-- Display and change player's name -->
-      <input
+      <!-- <input
         type="text"
         name="player-name"
         id="player-name"
-        placeholder="Player One" />
+        placeholder="Player One" /> -->
       <!-- display player's points -->
       <div class="points">
         <span class="points__num">11</span>
@@ -51,23 +54,23 @@
     </header>
 
     <main>
-      <section class="hangman__container">
-        <!-- <div class="hangman__el hangman--0"></div>
-        <div class="hangman__el hangman--1"></div>
-        <div class="hangman__el hangman--2"></div>
-        <div class="hangman__el hangman--3"></div>
-        <div class="hangman__el hangman--4"></div>
-        <div class="hangman__el hangman--5"></div>
-        <div class="hangman__el hangman--6"></div>
-        <div class="hangman__el hangman--7"></div>
-        <div class="hangman__el hangman--8"></div>
-        <div class="hangman__el hangman--9"></div>
-        <div class="hangman__el hangman--10"></div> -->
+      <section class="lantern__container">
+        <div class="lantern__el lantern--0"></div>
+        <!-- <div class="lantern__el lantern--1"></div> -->
+        <!-- <div class="lantern__el lantern--2"></div> -->
+        <!-- <div class="lantern__el lantern--3"></div> -->
+        <!-- <div class="lantern__el lantern--4"></div> -->
+        <!-- <div class="lantern__el lantern--5"></div> -->
+        <!-- <div class="lantern__el lantern--6"></div> -->
+        <!-- <div class="lantern__el lantern--7"></div> -->
+        <!-- <div class="lantern__el lantern--8"></div> -->
+        <!-- <div class="lantern__el lantern--9"></div> -->
+        <!-- <div class="lantern__el lantern--10"></div> -->
       </section>
 
       <template id="game--won">
         <h2 class="game-won">
-          Won! -
+          Won!<br>
           <span class="points__num points__num--won"></span>
           Points
         </h2>
@@ -135,7 +138,7 @@
         <button class="btn--letter"><span>n</span></button>
         <button class="btn--letter"><span>m</span></button>
       </section>
-      <button id="theme-toggle">Light</button>
+      <!-- <button id="theme-toggle">Light</button> -->
     </main>
   </body>
 </html>
