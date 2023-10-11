@@ -1,9 +1,9 @@
 // Imports and global variables - leave them as they are
 import { words, getLetterIndexes, getRandomWord } from './utils/utils.js';
 let currentWord = getRandomWord();
-let hangmanPart, points, lettersToGo, playing;
+let lanternPart, points, lettersToGo, playing;
 
-// ? last bit
+// ? last bit ==> Line 155
 const decrementPointsGlobal = new Event('decrementpoints');
 
 /**
@@ -14,18 +14,12 @@ const decrementPointsGlobal = new Event('decrementpoints');
  */
 const header = document.querySelector('header');
 const newWordForm = header.querySelector('form');
-
 /**
  * TODO | Select this button to randomly select a new word
  * TODO | button id="random-word-btn"
  */
 const randomWordBtn = document.getElementById('random-word-btn');
-
-/**
- * TODO | Select this input to get the player's name
- * TODO | input name="player-name"
- */
-const playerNameEl = Array.from(document.getElementsByName('player-name'))[0];
+// console.log(header.getElementById('random-word-btn')); // ! will break
 
 /**
  * TODO | Select this span to control the points
@@ -34,10 +28,10 @@ const playerNameEl = Array.from(document.getElementsByName('player-name'))[0];
 const pointsEl = header.querySelector('div>span.points__num');
 
 /**
- * TODO | Select this container to insert the hangman parts later on
- * TODO | <section class="hangman__container">
+ * TODO | Select this container to insert the lantern parts later on
+ * TODO | <section class="lantern__container">
  */
-const hangmanContainer = document.querySelector('section.hangman__container');
+const lanternContainer = document.querySelector('section.lantern__container');
 
 /**
  * TODO | This container to insert the missing and found letters later on
@@ -58,7 +52,7 @@ const keyboardEL = document.querySelector('.keyboard__container');
 /**
  * * Doing something with the elements
  *
- * * Display "spaces" for the currentWord inside the wordContainer
+ * * Display letters and "spaces" for the currentWord inside the wordContainer
  * TODO | Create and show <div class="word__letter--container"><span class="word__letter"></span></div>
  * TODO | per letter in currentWord
  */
@@ -81,10 +75,6 @@ function renderCurrentWord() {
     wordContainer.appendChild(div);
   }
 }
-/**
- * TODO | actually call the function 😊
- */
-renderCurrentWord();
 
 /**
  * * Making the UI interactive
@@ -114,7 +104,7 @@ function handleKeyboardClick(e) {
   btn.classList.add('strikeout');
   // disable the button
   btn.disabled = true;
-  if (indexes.length === 0) insertHangman();
+  if (indexes.length === 0) insertLantern();
   else insertLetter(indexes);
 }
 // ! OR
@@ -129,7 +119,7 @@ function handleLetterClick(e) {
   btn.classList.add('strikeout');
   // disable the button
   btn.disabled = true;
-  if (indexes.length === 0) insertHangman();
+  if (indexes.length === 0) insertLantern();
   else insertLetter(indexes);
 }
 
@@ -148,24 +138,24 @@ function insertLetter(foundIndexes) {
 }
 
 /**
- * TODO | display the next part of the hangman (consider the variable hangmanPart)
+ * TODO | display the next part of the lantern (consider the variable lanternPart)
  */
 
-function insertHangman() {
-  // prepare the new DOM node as template literal and insert the current hangmanPart
+function insertLantern() {
+  // prepare the new DOM node as template literal and insert the current lanternPart
   const html = `
-  <div class="hangman__el hangman--${hangmanPart}"></div>
+  <div class="lantern__el lantern--${lanternPart}"></div>
   `;
 
-  // insert the prepared markup into the hangmanContainer
-  hangmanContainer.insertAdjacentHTML('beforeend', html);
+  // insert the prepared markup into the lanternContainer
+  lanternContainer.insertAdjacentHTML('beforeend', html);
 
   points--;
   // (later) send Event
   document.dispatchEvent(decrementPointsGlobal);
 
-  hangmanPart++;
-  if (hangmanPart > 10) endGame('lost');
+  lanternPart++;
+  if (lanternPart > 6) endGame('lost');
 }
 
 /**
@@ -178,11 +168,11 @@ function endGame(status) {
   const template = document.getElementById(`game--${status}`);
   // clone the template
   const clone = template.content.cloneNode(true);
-  // append the clone to the hangmanContainer
-  hangmanContainer.append(clone);
+  // append the clone to the lanternContainer
+  lanternContainer.append(clone);
 
   if (status === 'won') {
-    hangmanContainer.querySelector('.points__num--won').textContent = points;
+    lanternContainer.querySelector('.points__num--won').textContent = points;
   }
 }
 
@@ -214,14 +204,7 @@ randomWordBtn.addEventListener('click', () => {
   currentWord = getRandomWord();
   start();
 });
-/**
- * TODO | Add an event listener on the "light" button, to toggle
- * TODO | the .light css class on the body element
- */
-document.getElementById('theme-toggle').addEventListener('click', (e) => {
-  document.body.classList.toggle('light');
-  e.target.textContent = e.target.textContent === 'Light' ? 'Dark' : 'Light';
-});
+
 /**
  * * re/starting the game
  */
@@ -229,8 +212,8 @@ document.getElementById('theme-toggle').addEventListener('click', (e) => {
 function start() {
   // clear wordContainer
   wordContainer.innerHTML = '';
-  // remove won/lost and hangmanParts
-  hangmanContainer.innerHTML = '';
+  // remove won/lost and lanternParts
+  lanternContainer.innerHTML = '';
 
   // remove .strikeout css class and disabled property from every letter btn
   [...keyboardEL.children].forEach((btn) => {
@@ -247,7 +230,7 @@ start();
 
 /**
  * ? optional - declaring and listening for custom Events
- * ? TODO  | declare a new Event "decrementpoints" on top of this file
+ * ? TODO | declare a new Event "decrementpoints" at the top of this file
  * ? TODO | Listen for custom event and decrement points
  */
 document.addEventListener('decrementpoints', () => {
@@ -263,8 +246,8 @@ document.addEventListener('decrementpoints', () => {
  */
 
 function resetValues() {
-  hangmanPart = 0;
-  points = 11;
+  lanternPart = 0;
+  points = 7;
   lettersToGo = currentWord.replaceAll(' ', '').length;
   playing = true;
   pointsEl.textContent = points;

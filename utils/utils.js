@@ -1,14 +1,14 @@
 const words = [
-  'DOM',
-  'React',
-  'VanillaJS',
   'garbage collector',
-  'NoSQL',
-  'Toro',
-  'Thirunavukkarasu',
-  'ephemeral',
-  'jazz',
+  'querySelector',
+  'addEventListener',
+  'insertAdjacentHTML',
+  'HTMLCollection',
+  'NodeList',
+  'capture phase',
+  'bubbling phase',
   'event loop',
+  'DOM manipulation',
 ];
 
 function getRandomWord() {
